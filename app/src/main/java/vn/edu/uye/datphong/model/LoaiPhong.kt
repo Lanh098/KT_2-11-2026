@@ -1,8 +1,8 @@
 package vn.edu.uye.datphong.model
 
-class LoaiPhong {
-    ma: string;
-    ten: string;
-    giaMotDem: long;
-    sucChua: int;
+data class LoaiPhong {
+    val ma : String,
+    val ten : String,
+    val giaMotDem: Long,
+    val sucChua: Int
 }
