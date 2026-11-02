@@ -8,5 +8,5 @@ object KiemTraHelper {
         val regex = Regex("^0\\d{9}\$")
         return regex.matches(sdt)
     }
-    
+
 }
