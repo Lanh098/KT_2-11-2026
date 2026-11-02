@@ -4,14 +4,24 @@ import vn.edu.uye.datphong.model.LoaiPhong
 class DatPhongHelper {
     fun timLoaiPhong(ma: String): LoaiPhong? {
         val maCanTim = ma.trim()
-        return DuLieuMau.dsLoaiPhong.find { it.ma.equals(maCanTim, ignoreCase = true)}
+        return DuLieuMau.dsLoaiPhong.find { it.ma.equals(maCanTim, ignoreCase = true) }
     }
-    fun hopLeSoKhach(loai: LoaiPhong, soKhach: Int ): Boolean {
+
+    fun hopLeSoKhach(loai: LoaiPhong, soKhach: Int): Boolean {
         return soKhach in 1..(loai.sucChua + 2)
     }
-    fun tinhTienPhong_2415053122123(loai: LoaiPhong, soDem: Int, soKhach: Int): Long{
-        if (soDem<1 || !hopLeSoKhach(loai, soKhach)) return 0L
+
+    fun tinhTienPhong_2415053122123(loai: LoaiPhong, soDem: Int, soKhach: Int): Long {
+        if (soDem < 1 || !hopLeSoKhach(loai, soKhach)) return 0L
         var tienPhong = loai.giaMotDem * soDem
-        if (soDem)
+        if (soDem >= 3) {
+            tienPhong = (tienPhong * 85) / 100
+        }
+        var phuThu = 0L
+        if (soKhach > loai.sucChua) {
+            val khachVuot = soKhach - loai.sucChua
+            phuThu = khachVuot * 150000L * soDem
+        }
+        return tienPhong + phuThu
     }
 }
