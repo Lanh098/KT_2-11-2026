@@ -9,7 +9,8 @@ class DonDatPhong (
     val soDem : Int,
     val soKhach : Int,
     val ghiChu : String = ""
-)
+){
 fun tomTat(): String{
-    return "Khách: $hoTen - Mã phòng: $maLoaiPhong - Ngày nhận: $ngayNhan - Số đêm"
+    return "Khách: $hoTen - Mã phòng: $maLoaiPhong - Ngày nhận: $ngayNhan - Số đêm: $soDem"
+    }
 }
